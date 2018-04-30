@@ -1,12 +1,4 @@
 
-.test{
-  background-color: white;
-}
-
-.test2{
-  background-color: yellow;
-}
-
 p{
   font-size: 16px;
 }
@@ -16,19 +8,49 @@ p{
   padding: 20px;
   text-align: center;
 }
-.sideselect{
+.sideselect ,.sideBarFoot, .MainGame, .LeaderBoard, .PageEndFoot{
   border: solid black 3px;
-  height: inherit;
-}
-.MainGame{
-    border: solid black 3px;
-}
-.LeaderBoard{
-  border: solid black 3px;
-}
 
+}
+.sideselect{
+  height: 80vh;
+  border-bottom:none;
+}
+.sideBarFoot{
+border-top: none;
+/* border-bottom: none; */
+padding: 33px;
+border-right: 0;
+width: 16.5vw;
+}
+.FullGame{
+  padding: 10px
+}
+.GameTitle{
+  /* text-decoration: underline; */
+  border-bottom: solid black 3px;
+}
+.StartGame{
+  width: 40vw;
+  height: 10vh;
+  font-size: 3vw;
+  font-weight: 600;
+}
+.ObjectCard, .RightSortingBin, .LeftSortingBin{
+  border: solid 1px black;
+  height: 20vh;
+  width: 15vw;
+  font-size: 100px;
+  text-align: center;
+  padding-top: 20px;
+}
+.LeaderCaption{
+  font-weight: bold;
+}
+.MenuWelcome{
+  text-decoration: underline;
+}
 .PageEndFoot{
-  border: solid black 3px;
   font-family: cursive;
-  /* position:  */
+
 }
