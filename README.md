@@ -1,4 +1,4 @@
-#Game Project: The Brin Trainer 
+#Game Project: The Brain Trainer 
 
 ##What i have delivered 
 

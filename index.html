@@ -9,15 +9,69 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="container fluid">
-      <div class="row">
+    <div class="container-fluid">
+      <div class="row"><!-- Row only for the header -->
         <div class="col-md-12 Banner"> <!-- This will be the title of the game + The current selected game-->
          <h1>The Brain Trainer <small> Sorting Bin</small> </h1>
-         
-        </div>
 
+       </div><!-- Closing of the Header -->
+
+     </div> <!-- Header Row Close -->
+     <div class="row"> <!-- Body of the game page-->
+       <div class="col-md-2 sideselect"><!-- Left most sidebdar used for selceting games -->
+         <ul>
+           <li>Sorting Game</li>
+           <li>Reaction & Accuracy game</li>
+           <li>Matching game</li>
+         </ul>
+       </div> <!-- Closing game selecting sidebar -->
+       <div class="col-md-8 MainGame"><!-- Main Game to be contained here -->
+         <p>Main <br>
+           Game <br>
+           content <br>
+           will <br>
+           placed <br>
+           here <br>
+           .
+         </p>
+       </div> <!-- Closing the main Game content -->
+       <div class="col-md-2 LeaderBoard"> <!-- Leaderboard for each game to be container here -->
+         <table>
+           <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+         </table>
+       </div><!-- Closing the LeaderBoard here -->
+     </div><!-- Closing the body -->
+     <div class="row"> <!-- Footer Row open -->
+      <div class="col-md-8 col-md-offset-2 PageEndFoot">
+        <h2>Support this Game!</h2>
       </div>
 
+     </div><!-- Footer Row Close -->
     </div>
   </body>
 
