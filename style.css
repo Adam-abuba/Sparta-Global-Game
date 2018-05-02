@@ -15,12 +15,16 @@ p{
 
 .Banner{
   border: solid black 3px;
+  border-bottom: none;
   padding: 20px;
   text-align: center;
 }
 .sideselect ,.sideBarFoot, .MainGame, .LeaderBoard, .PageEndFoot{
   border: solid black 3px;
 
+}
+.MainGame{
+  border-top: none;
 }
 .sideselect{
   height: 73.6vh;
@@ -37,13 +41,13 @@ width: 16.46vw;
   height: 73.6;
 }
 .GameTitle{
-  /* text-decoration: underline; */
-  border-bottom: solid black 3px;
+  text-decoration: underline;
+
 }
 .Instructions{
   height: 62.5vh;
 }
-.IconRow{
+.IconRow, .ScoreRow{
   align-items: center;
 }
 .StartGame{

@@ -3,6 +3,8 @@ window.onload = function () { //When the page loads the games will be hidden in 
   };
 var Score = 0;
 var Icon = 0;
+
+
 $("#SortGameRefresh").on("click",function () {
       window.location.reload(true);
 });
@@ -47,6 +49,8 @@ function Gamestart() {
                       if(Icon == 1) {
                         Score+=1;
                         $(".Ticks").remove();
+                        $(".Cross").remove();
+
                         $(".ScoreBox").html(Score)
                         console.log('Player Scored a point');
                         $(".LeftSortingBin").html("<i class='far fa-check-circle Ticks'></i>");
@@ -54,6 +58,7 @@ function Gamestart() {
                       }
                       else {
                         Score-=1;
+                        $(".Ticks").remove();
                         $(".Cross").remove();
                         $(".ScoreBox").html(Score)
                         $('.LeftSortingBin').html('<i class="far fa-times-circle Cross"></i>')
@@ -62,21 +67,23 @@ function Gamestart() {
                       }
                       break;
                     case 39:
-                    if(Icon == 0) {
-                      Score+=1;
-                      $(".Ticks").remove();
-                      $(".ScoreBox").html(Score)
-                      $(".RightSortingBin").html("<i class='far fa-check-circle Ticks'></i>");
-                      console.log('Player Scored a point');
-                      IconChange();
+                      if(Icon == 0) {
+                        Score+=1;
+                        $(".Ticks").remove();
+                        $(".Cross").remove();
+                        $(".ScoreBox").html(Score)
+                        $(".RightSortingBin").html("<i class='far fa-check-circle Ticks'></i>");
+                        console.log('Player Scored a point');
+                        IconChange();
                     }
-                    else {
-                      Score-=1;
-                      $(".Cross").remove();
-                      $(".ScoreBox").html(Score)
-                      $('.RightSortingBin').html('<i class="far fa-times-circle Cross"></i>')
-                      console.log('Incorrect answer from the player');
-                      IconChange();
+                      else {
+                        Score-=1;
+                        $(".Cross").remove();
+                        $(".Ticks").remove();
+                        $(".ScoreBox").html(Score)
+                        $('.RightSortingBin').html('<i class="far fa-times-circle Cross"></i>')
+                        console.log('Incorrect answer from the player');
+                        IconChange();
                     }
                     break;
                 }
