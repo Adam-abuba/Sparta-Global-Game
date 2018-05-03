@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>The Brain Trainer</title>
-    <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One|Press+Start+2P" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <audio src="Audio/music.m4a" autoplay loop>
-
-    </audio>
+    <audio src="Audio/music.m4a" autoplay loop></audio> <!-- Background music starts as soon as the page loads and loops as long as its open-->
     <div class="container-fluid">
+      <div class="row">
+        <div class="gameOver"><!-- This div contains the game over alert that displays the final score and button which restarts the game -->
+          <div class="endText"></div>
+          <br>
+          <button type="button" name="button" class="playAgain">Play Again</button>
+        </div>
       <div class="row"><!-- Row only for the header -->
         <div class="col-md-8 col-md-offset-2 Banner"> <!-- This will be the title of the game + The current selected game-->
           <button type="button" name="button" class="circularBorder"><h1>The Brain Trainer</h1></button>
@@ -22,42 +26,62 @@
        <div class="col-md-8 col-md-offset-2 MainGame"><!-- Main Game to be contained here -->
        <div class="SortingPage"> <!-- when the the div is activated the display turns off the divs of other pages within the div -->
          <div class="row">
-           <div class="col-md-12 GameTitle w3-button">
+           <div class="col-md-12 GameTitle">
               <h2>Sorting Game</h2>
            </div>
          </div>
          <div class="row">
            <div class="col-md-12">
              <div class="Instructions">
-
-
                <h3>Instructions</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+               <ul>
+                 <li>The object card will display a random icon: Ring or Pyramid </li>
+                 <li>Rings go in the left basket (left arrow key). Pyramids in the right basket (right arrow key).</li>
+                 <li>Selecting the correct basket will display a green icon in your selected basket.</li>
+                 <li>Selecting the incorrect basket will display a red icon in your selected basket.</li>
+                 <li>Upon selecting the correct answer 1 point will be added to your score</li>
+                 <li>Upon selecting the incorrect answer 1 point will be deducted your score.</li>
+                 <li>You must have a minimum of 15 points in order to pass</li>
+               </ul>
                <button type="button" name="button"class="StartGame submit">Start Game</button>
              </div>
-             <div class="FullGame">
+             <div class="FullGame"> <!-- Playable content is kept hidden here until start game button is pressed -->
                <div class="row">
-                 <div class="col-md-7 col-md-offset-4 IconRow">
-                   <div class="ObjectCard">
+                 <div class=" col-md-4">
+                 </div>
+                 <div class="col-md-7 IconRow">
+                   <div class="ObjectCard"> <!-- Icon to be sorted -->
                      <p>Item To be Sorted</p>
                    </div>
                  </div>
+                 <div class="col-md-1 col-md-pull-2 time" > <!-- countdown timer the let player know how much time is left -->
+                   <span style="font-size:37px;">Ready?</span> <!--Inline styling needed to keep "Ready?" text within the border as due to character length -->
+                 </div>
                </div>
                <div class="row">
                  <div class="col-md-6">
-                   <p>Circles </p>
+                   <div>
+                     <img src="images/LeftArrow.gif" class="LeftArrow" alt="Animated left arrow GIF">
+                   </div>
                    <div class="LeftSortingBin"> <!-- Left bin is for circles -->
+                     <img src="images/Basket.png" class="Basket LeftBasket" alt="Basket icon">
+                     <img src="images/Circle.gif" alt="Sonic ring gif" class = "LeftBasketLogo">
                    </div>
                  </div>
                  <div class="col-md-6">
+                   <div class="RightArrowBox">
+                     <img src="images/RightArrow.gif" class="RightArrow" alt="Animated right arrow GIF">
+                   </div>
                    <div class="RightSortingBin"> <!-- Right bin is for cross -->
-                     <p>Crosses to the Right</p>
+                     <img src="images/Basket.png" class="Basket" alt="Basket icon">
+                     <img src="images/Pyramid.gif" alt="Pyramid gif" class = "RightBasketLogo">
                    </div>
                  </div>
                </div>
                <div class="row">
-                 <div class="col-md-7 col-md-offset-4 ScoreRow">
-                   <div class="ScoreBox"><p>Your Score</p>
+                 <div class="col-md-4 col-md-offset-4 ScoreRow">
+                   <div class="ScoreBox">
+                     <p class="InitialScore">0</p>
                    </div>
                  </div>
                </div>
@@ -67,6 +91,7 @@
        </div><!-- Closing the sorting game page div -->
        </div> <!-- Closing the main Game content -->
      </div><!-- Closing the body -->
+     </div>
     </div>
   </body>
   <script

@@ -1,92 +1,111 @@
 window.onload = function () { //When the page loads the games will be hidden in their divs with display property = none until their respective button is turned on
   $(".FullGame").css("display", "none");
-  };
+}
 var Score = 0;
 var Icon = 0;
+var myCorrectSound = new Audio("Audio/Correct.mp3");
+var myIncorrectSound = new Audio("Audio/Incorrect.mp3");
 
 
-$("#SortGameRefresh").on("click",function () {
-      window.location.reload(true);
-});
+$(".StartGame").click(Gamestart).click(timeUp).click(IconChange);
+$(".playAgain").click(playAgain);
 
-$(".StartGame").click(Gamestart).click(TimeUp).click(IconChange);
 
-function TimeUp() { // This is the timer for each game in which the user plays
-  setTimeout(function() {
-    if (Score >= 10) {
-     alert("Your 30 seconds are up!" + " You Scored " + Score + " points! You pass!!")
-    } else {
-     alert("Your 30 seconds are up! You have only scored " + Score + " points. You fail");
-    };
+function timeUp() { // This is the timer for each game in which the user plays
+    var time = 30;
+    var countdown = setInterval(function(){ $(".time").html(time); // This section displays the countdown on screen by running an interval every second and re-displaying the value of time
+          time--;
+        }, 1000);
 
-    window.location.reload(true);
+
+  setTimeout(function() { // This section is what actual controls the time before the game over screen appears and informs the player of whether the have won or failed
+    clearInterval(countdown);
+    $(".gameOver").css("display", "inline")
+    $(".endText").html(function () {
+      if (Score >= 15) {
+       return "Times up!" + " You scored " + Score + " points! You pass!!"
+      } else {
+       return "Times up! You scored " + Score + " points. You fail.";
+      };
+
+    })
     Score = 0;
-
-  }, 30000);
+  }, 31000); // Delay between setInterval and setTimeout means an extra second must be added to setTimeout to allow the countdown display to be in sync.
 }
 
-function IconChange() {
+
+function playAgain() { //This function reloads the page when the "Play Again" button is clicked
+ window.location.reload(true);
+}
+
+
+function IconChange() { // The function gives a random number between 0 and 1.99 then always rounds down to either give 0 or 1 which in turn selects the icon to be sorted.
   Icon = Math.floor(Math.random() * 2);
   $(".ObjectCard").html(
     function () {
   if (Icon == 1) {
-    return "O";
+    return '<img src="images/Circle.gif" alt="Rotating ring gif" class = "Ring">';
   }
   else if (Icon == 0){
-    return "X";
+    return '<img src="images/Pyramid.gif" alt="Rotating pyramid gif" class = "Ring">';
   }
 });
 }
 
 function Gamestart() {
-  $(".Instructions").css("display",'none')
-  $(".FullGame").css("display", "inline");
-        $(".ObjectCard").html( // Determines what is to show up on the Icon card
+  $(".Instructions").css("display",'none') // Hides the instructions
+  $(".FullGame").css("display", "inline"); // Reveals game content
+        $(".ObjectCard").html( // Determines how the game reacts to what is to shown on the Icon card
           function () {
             $(document).keydown(function() {
                 switch (window.event.keyCode) {
-                    case 37:
-                      if(Icon == 1) {
-                        Score+=1;
-                        $(".Ticks").remove();
-                        $(".Cross").remove();
-
-                        $(".ScoreBox").html(Score)
-                        console.log('Player Scored a point');
-                        $(".LeftSortingBin").html("<i class='far fa-check-circle Ticks'></i>");
-                        IconChange();
-                      }
-                      else {
-                        Score-=1;
-                        $(".Ticks").remove();
-                        $(".Cross").remove();
-                        $(".ScoreBox").html(Score)
-                        $('.LeftSortingBin').html('<i class="far fa-times-circle Cross"></i>')
-                        console.log('Incorrect answer from the player');
-                        IconChange();
-                      }
+                    case 37: // Left arrow key
+                      $(".ObjectCard").animate({right: '+=250', top: '+=250'}, "fast", function () { //slides the icon diagonally towards the ring basket which then goes into the if & else statement to determine whether its correct or not.
+                        if(Icon == 1) {
+                          Score+=1;
+                          $(".Ticks").remove();
+                          $(".Cross").remove();
+                          myCorrectSound.play();
+                          $(".ScoreBox").html(Score)
+                          $(".LeftSortingBin").html("<i class='far fa-check-circle Ticks'></i>");
+                          IconChange();
+                        }
+                        else {
+                          Score-=1;
+                          $(".Ticks").remove();
+                          $(".Cross").remove();
+                          myIncorrectSound.play();
+                          $(".ScoreBox").html(Score)
+                          $('.LeftSortingBin').html('<i class="far fa-times-circle Cross"></i>')
+                          IconChange();
+                          }
+                      $(this).removeAttr('style');// This resets the postion of the the animated div otherwise the next animation will continue from the current div's postion and fall off the page
+                        })
                       break;
-                    case 39:
-                      if(Icon == 0) {
-                        Score+=1;
-                        $(".Ticks").remove();
-                        $(".Cross").remove();
-                        $(".ScoreBox").html(Score)
-                        $(".RightSortingBin").html("<i class='far fa-check-circle Ticks'></i>");
-                        console.log('Player Scored a point');
-                        IconChange();
-                    }
-                      else {
-                        Score-=1;
-                        $(".Cross").remove();
-                        $(".Ticks").remove();
-                        $(".ScoreBox").html(Score)
-                        $('.RightSortingBin').html('<i class="far fa-times-circle Cross"></i>')
-                        console.log('Incorrect answer from the player');
-                        IconChange();
-                    }
-                    break;
-                }
-            });
-        });
+                    case 39: //Right arrow key
+                      $(".ObjectCard").animate({left: '+=250', top: '+=250'}, "fast", function () {//slides the icon diagonally towards the pyramid basket which then goes into the if & else statement to determine whether its correct or not.
+                        if(Icon == 0) {
+                          Score+=1;
+                          $(".Ticks").remove();
+                          $(".Cross").remove();
+                          myCorrectSound.play();
+                          $(".ScoreBox").html(Score)
+                          $(".RightSortingBin").html("<i class='far fa-check-circle Ticks'></i>");
+                          IconChange();
+                      }
+                        else {
+                          Score-=1;
+                          $(".Cross").remove();
+                          $(".Ticks").remove();
+                          myIncorrectSound.play();
+                          $(".ScoreBox").html(Score)
+                          $('.RightSortingBin').html('<i class="far fa-times-circle Cross"></i>')
+                          IconChange();
+                        }
+                      $(this).removeAttr('style'); // This resets the postion of the the animated div otherwise the next animation will continue from the current div's postion and fall off the page
+          })
+          break;
         }
+      });
+  });
+}
