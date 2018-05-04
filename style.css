@@ -1,12 +1,151 @@
 
-.test{
-  background-color: white;
+body {
+    background-image: url("images/polygon.jpg");
 }
-
-.test2{
-  background-color: yellow;
+.Ticks{
+  color: #006622;
 }
-
+.Cross{
+  color: #cc0000;
+}
 p{
   font-size: 16px;
+}
+.LeftArrow, .RightArrow, .Ring{
+  height: 18vh;
+  width: 12vw;
+}
+.Basket{
+  height: 20vh;
+  width: 15vw;
+}
+.LeftBasketLogo{
+  height: 10vh;
+  width: 8vw;
+  position: absolute;
+  top: 240px;
+  left: 70px;
+}
+.RightBasketLogo{
+  height: 10vh;
+  width: 8vw;
+  position: absolute;
+  top: 230px;
+  right: 60px;
+}
+.RightArrowBox{
+  padding-left: 300px;
+}
+.Banner{
+  border: solid black 3px;
+  border-bottom: none;
+  padding: 20px;
+  text-align: center;
+}
+ .MainGame, .LeaderBoard{
+  border: solid black 3px;
+}
+.time{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 100px;
+}
+.MainGame{
+  border-top: none;
+}
+.gameOver{
+  position: absolute;
+  display: none;
+  left: 450px;
+  top: 250px;
+  border: solid black 1px;
+  border-radius: 5px;
+  background-color: red;
+  height: 300px;
+  width: 500px;
+  font-size: 30px;
+  font-family: 'Press Start 2P', cursive;
+  z-index: 1;
+}
+.playAgain{
+  z-index: 1;
+  font-size: 30px;
+  font-family: 'Press Start 2P', cursive;
+  background-color: blue;
+  position: absolute;
+  left: 100px;
+}
+.FullGame{
+  padding: 10px;
+  height: 73.6;
+}
+.GameTitle{
+  text-decoration: underline;
+}
+.Instructions{
+  height: 62.5vh;
+}
+li{
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 700;
+}
+.IconRow, .ScoreRow{
+  align-items: center;
+}
+.StartGame{
+  width: 40vw;
+  height: 10vh;
+  font-size: 3vw;
+  font-weight: 600;
+}
+.ObjectCard, .RightSortingBin, .LeftSortingBin, .ScoreBox{
+  border: solid 1px black;
+  height: 20vh;
+  width: 15vw;
+  font-size: 100px;
+  text-align: center;
+  padding-top: 20px;
+}
+.ObjectCard {
+  position: absolute;
+}
+.ScoreBox{
+  border-width: 8px;
+  font-family: 'Press Start 2P', cursive;
+}
+.InitialScore{
+  font-size: 100px;
+}
+.ObjectCard, .RightSortingBin, .LeftSortingBin{
+  border: none;
+}
+.RightSortingBin{
+  float: right;
+}
+.LeftSortingBin{
+  float: left;
+}
+.submit {
+  background: #009999;
+  box-shadow: 0px 5px #008080;
+  text-align: center;
+  padding-left:  170px;
+  float: right;
+  position: relative;
+  left: -20%;
+  text-align: left;
+}
+.submit:active {
+  box-shadow: 0px 0px #717a33;
+  top: 4px;
+}
+.Banner{
+      font-family: 'Lilita One', cursive;
+      font-size: 50px;
+}
+.circularBorder{
+  border: 0.1px solid #cc99ff;
+  cursor: default;
+  border-radius: 10px;
+  background-color: #cc99ff;
 }
